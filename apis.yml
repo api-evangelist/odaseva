@@ -1,8 +1,26 @@
 aid: odaseva
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/odaseva.png
 name: Odaseva
-description: 'Odaseva is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Infrastructure SaaS. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Odaseva is an enterprise data security, backup, and governance platform purpose-built
+  for large, complex Salesforce environments. It provides data backup and recovery,
+  archiving, seeding and anonymization/masking, encryption and key management, privacy
+  and data-residency controls, and data governance for regulated enterprises. Odaseva
+  holds SOC 2 Type II, ISO 27001:2022, HITRUST, HIPAA, GDPR, CCPA, TISAX, IRAP, MLPS 2.0,
+  and CSA STAR Level 2, with independent audits by Ernst & Young. Surfaced as a portfolio
+  company of Partech and added to the API Evangelist network; Odaseva sells to enterprises
+  and does not publish a public developer API portal, OpenAPI, or SDKs at this time.
 url: https://raw.githubusercontent.com/api-evangelist/odaseva/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,10 +30,17 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Infrastructure Saas
+- Salesforce
+- Data Protection
+- Backup
+- Data Governance
+- Security
+- Compliance
+- Privacy
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -25,3 +50,30 @@ maintainers:
 common:
 - type: Website
   url: https://www.odaseva.com/
+- type: TrustCenter
+  url: https://www.odaseva.com/security-trust
+- type: Compliance
+  url: https://www.odaseva.com/security-trust
+- type: Security
+  url: https://www.odaseva.com/responsibility-disclosure/
+- type: VulnerabilityDisclosure
+  url: security/odaseva-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/odaseva-domain-security.yml
+- type: SecurityTxt
+  url: well-known/odaseva-security.txt
+- type: WellKnown
+  url: well-known/odaseva-well-known.yml
+- type: Blog
+  url: https://www.odaseva.com/blog/
+- type: Support
+  url: https://www.odaseva.com/contact-us/
+- type: PrivacyPolicy
+  url: https://www.odaseva.com/assets/pdf/Odaseva-Privacy-Policy.pdf
+- type: TermsOfService
+  url: https://www.odaseva.com/assets/pdf/Odaseva-TermsofUse.pdf
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 5
+  pass: local-v1
