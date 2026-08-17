@@ -1,15 +1,98 @@
-generated: '2026-07-20'
+generated: '2026-08-17'
 method: searched
+source: live probes of every Odaseva host found in apis.yml, DNS, and the product pages
+hosts_probed:
+- https://www.odaseva.com
+- https://api.odaseva.com
+- https://platform.odaseva.com
+- https://trust.odaseva.com
 host: https://www.odaseva.com
 documents:
 - path: /.well-known/security.txt
+  host: www.odaseva.com
   status: 200
   file: odaseva-security.txt
+  note: >-
+    RFC 9116 security.txt authored by Odaseva (Contact vulnerability@odaseva.com,
+    Policy www.odaseva.com/responsibility-disclosure/). This is the one first-party
+    well-known document Odaseva serves.
 - path: /.well-known/openid-configuration
+  host: www.odaseva.com
   status: 404
 - path: /.well-known/oauth-authorization-server
+  host: www.odaseva.com
+  status: 404
+- path: /.well-known/oauth-protected-resource
+  host: www.odaseva.com
   status: 404
 - path: /.well-known/api-catalog
+  host: www.odaseva.com
   status: 404
 - path: /.well-known/ai-plugin.json
+  host: www.odaseva.com
   status: 404
+- path: /.well-known/openid-configuration
+  host: api.odaseva.com
+  status: 200
+  file: odaseva-api-openid-configuration.json
+  content_type: application/json
+  owner: salesforce
+  note: >-
+    NOT AN ODASEVA-AUTHORED DOCUMENT. api.odaseva.com is Odaseva's Salesforce My Domain
+    host (Visualforce /CBR/ application, Salesforce IP space), so the OIDC discovery
+    document served here is the Salesforce platform's: issuer https://login.salesforce.com,
+    endpoints under login.salesforce.com, and the standard Salesforce scope set
+    (api, full, refresh_token, cdp_*, mcp_api, ...). Saved verbatim because it is real
+    evidence of how the Odaseva platform authenticates, but it must NOT be read as
+    Odaseva publishing its own authorization server.
+- path: /.well-known/security.txt
+  host: api.odaseva.com
+  status: 401
+- path: /.well-known/oauth-authorization-server
+  host: api.odaseva.com
+  status: 401
+- path: /.well-known/oauth-protected-resource
+  host: api.odaseva.com
+  status: 401
+- path: /.well-known/api-catalog
+  host: api.odaseva.com
+  status: 401
+- path: /.well-known/ai-plugin.json
+  host: api.odaseva.com
+  status: 401
+- path: /.well-known/openid-configuration
+  host: platform.odaseva.com
+  status: 200
+  owner: salesforce
+  note: >-
+    Byte-equivalent Salesforce platform OIDC discovery document, same reason as
+    api.odaseva.com. Not saved a second time.
+- path: /.well-known/security.txt
+  host: platform.odaseva.com
+  status: 401
+- path: /.well-known/api-catalog
+  host: platform.odaseva.com
+  status: 401
+- path: /.well-known/security.txt
+  host: trust.odaseva.com
+  status: 200
+  owner: atlassian
+  note: >-
+    PGP-signed Atlassian security.txt (Canonical https://www.atlassian.com/.well-known/security.txt,
+    Contact security@atlassian.com) served by the Atlassian Statuspage that backs
+    trust.odaseva.com. Third-party document — not saved and not credited to Odaseva.
+- path: /.well-known/openid-configuration
+  host: trust.odaseva.com
+  status: 404
+- path: /.well-known/api-catalog
+  host: trust.odaseva.com
+  status: 404
+- path: /.well-known/ai-plugin.json
+  host: trust.odaseva.com
+  status: 404
+summary:
+  first_party_hits: 1
+  third_party_hits: 3
+  misses: 15
+  api_catalog: false
+  ai_plugin: false

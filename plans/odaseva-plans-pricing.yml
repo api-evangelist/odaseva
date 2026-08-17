@@ -1,0 +1,36 @@
+generated: '2026-08-17'
+method: searched
+source: https://www.odaseva.com/
+plan_count: 0
+currency: null
+billing_periods: []
+plans: []
+editions_named_without_pricing:
+- name: Professional
+  url: https://www.odaseva.com/backup-and-restore/professional
+  note: >-
+    Named product edition with its own security-controls addendum
+    (www.odaseva.com/legal/en/odaseva-security-controls-professional); no price, quota or
+    overage published.
+- name: Enterprise
+  url: https://www.odaseva.com/legal/en/odaseva-security-controls-enterprise
+  note: Named edition via its published security-controls addendum; no price published.
+note: >-
+  Odaseva publishes NO pricing. There is no pricing page at all — www.odaseva.com/pricing,
+  /pricing/ and /plans all return 404, and the 376-URL sitemap contains no pricing or plans
+  URL. The motion is enterprise contact-sales: product pages terminate in "Get a demo" /
+  "Contact us" (www.odaseva.com/contact-us). Two editions (Professional, Enterprise) are
+  named in the published legal security-controls addenda, but with no price, quota, overage
+  or per-tier limit attached — so there is nothing to record as a plan and NO `Pricing`
+  pointer is emitted in apis.yml.
+evidence:
+- url: https://www.odaseva.com/pricing
+  status: 404
+- url: https://www.odaseva.com/plans
+  status: 404
+- url: https://www.odaseva.com/sitemap.xml
+  status: 200
+- url: https://www.odaseva.com/contact-us/
+  status: 200
+- url: https://www.odaseva.com/backup-and-restore/professional
+  status: 200

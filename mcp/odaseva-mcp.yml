@@ -1,0 +1,56 @@
+generated: '2026-08-17'
+method: probed
+source: >-
+  Live probes of every Odaseva-controlled host (www / api / platform / trust .odaseva.com)
+  plus an npm registry search of the first-party `odaseva` publisher account and a web
+  search for an announced Odaseva MCP server. No OpenAPI, GraphQL SDL or AsyncAPI exists
+  for this provider, so there was nothing to derive a candidate tool list from either.
+pointer_note: >-
+  DELIBERATELY NOT WIRED as a `type: MCPServer` pointer in apis.yml. This file is a probe
+  record of an ABSENCE, not a provider document. Emitting the pointer would credit Odaseva
+  with an agent surface it does not ship — the same rule the WellKnown and AgentCard steps
+  apply. Re-evaluate if Odaseva ever publishes a hosted endpoint or an MCP package.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: probed
+servers: []
+tools: []
+findings:
+  hosted_endpoint: false
+  stdio_package: false
+  derived_candidate: false
+  derived_candidate_reason: >-
+    No OpenAPI, Swagger, GraphQL SDL or AsyncAPI document exists anywhere on Odaseva's
+    public surface, so no operation set exists to project into candidate MCP tools. The
+    only readable operation surface is the command list in cli/odaseva-cli.yml, which was
+    read out of a published binary rather than a contract — it names commands but carries
+    no parameter schemas, so projecting it into tools would be fabrication.
+  registry_search: >-
+    registry.npmjs.org search for "odaseva" returns exactly three packages, all published
+    by the `odaseva` account and all pre-2023: odaseva-cli (2022-12-09), odaseva-sfdx
+    (2019-03-14), odaseva-dx (2019-08-01). None is an MCP server. No @odaseva scope exists.
+  ecosystem_note: >-
+    Odaseva is a Salesforce-hosted application, and Salesforce itself ships MCP support
+    (Agentforce MCP, the Salesforce DX MCP Server). Those are SALESFORCE's servers, not
+    Odaseva's, and the Salesforce platform scope `mcp_api` visible in
+    well-known/odaseva-api-openid-configuration.json belongs to the Salesforce
+    authorization server for the same reason. Nothing here is creditable to Odaseva.
+evidence:
+- url: https://api.odaseva.com/mcp
+  status: 404
+- url: https://api.odaseva.com/graphql
+  status: 404
+- url: https://www.odaseva.com/.well-known/mcp.json
+  status: 404
+- url: https://api.odaseva.com/openapi.json
+  status: 401
+- url: https://registry.npmjs.org/-/v1/search?text=odaseva
+  status: 200
+gaps:
+- No hosted/remote MCP endpoint on any Odaseva host.
+- No local-stdio MCP package on npm, PyPI or any other registry.
+- No public contract to derive a candidate tool list from.

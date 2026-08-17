@@ -1,0 +1,67 @@
+generated: '2026-08-17'
+method: probed
+source: https://trust.odaseva.com/
+status_page: https://trust.odaseva.com/
+status_page_detail:
+  provider: Atlassian Statuspage
+  title: Odaseva Status
+  description: Welcome to Odaseva's home for real-time and historical data on system performance.
+  http_status: 200
+  fetched: '2026-08-17'
+  components:
+  - Odaseva Platform
+  - Odaseva Console
+  component_dimensions:
+  - Data processing (per region)
+  - Data storage (per region)
+  history: https://trust.odaseva.com/history
+  feeds:
+  - https://trust.odaseva.com/history.atom
+  - https://trust.odaseva.com/history.rss
+  note: >-
+    The status page is served on the trust.odaseva.com hostname (an Atlassian Statuspage
+    CNAME), which is why an earlier pass mistook it for a trust center; the trust /
+    compliance posture is separately published at www.odaseva.com/security-trust.
+    trust.odaseva.com/robots.txt disallows /api/, so the Statuspage JSON API was not
+    fetched.
+versioning:
+  scheme: explicit-api-version-selector
+  current: null
+  docs: null
+  evidence: >-
+    The first-party Odaseva CLI exposes --apiVersion ("Allows you to use a specific Odaseva
+    API version.") and reports both a "Current Odaseva API version: v%s" and a "Default
+    Odaseva API version: v%s", so the Odaseva Platform API is versioned as v<n> and a
+    client may pin a version. The version numbers themselves are resolved from the tenant
+    at runtime and are not published publicly.
+  source: packages/odaseva-packages.yml (odaseva-cli@2022.12.0)
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: >-
+    No public deprecation or sunset policy found. Probed www.odaseva.com/release-notes (404)
+    and www.odaseva.com/changelog (404); release notes live in the customer knowledge base
+    behind the platform login. NO `Deprecation` pointer is emitted for this artifact.
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    Uptime commitments appear in the published security-controls contract addenda
+    (www.odaseva.com/legal/en/odaseva-security-controls-enterprise and
+    .../odaseva-security-controls-professional) rather than as a public SLA page with a
+    stated percentage; no numeric target is recorded here because none was read verbatim.
+deprecated_operations: []
+deprecated_packages:
+- npm: odaseva-sfdx
+  last_release: '2019-03-14'
+  note: Superseded by odaseva-dx and then odaseva-cli; no formal deprecation notice published.
+- npm: odaseva-dx
+  last_release: '2019-08-01'
+  note: Declared source repo github.com/odaseva/odaseva-dx now 404s.
+evidence:
+- url: https://trust.odaseva.com/
+  status: 200
+- url: https://www.odaseva.com/release-notes
+  status: 404
+- url: https://www.odaseva.com/changelog
+  status: 404

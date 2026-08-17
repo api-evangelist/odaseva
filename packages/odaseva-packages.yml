@@ -1,0 +1,88 @@
+generated: '2026-08-17'
+method: searched
+source: >-
+  npm registry search + registry.npmjs.org metadata for the "odaseva" npm account;
+  PyPI, RubyGems, crates.io, Packagist and GitHub searched with no first-party result.
+packages:
+- language: go
+  distribution: npm-wrapped binary
+  registry: npm
+  name: odaseva-cli
+  url: https://www.npmjs.com/package/odaseva-cli
+  install: npm install -g odaseva-cli
+  binary: odaseva
+  official: true
+  version: 2022.12.0
+  published: '2022-12-09'
+  kind: cli
+  note: >-
+    First-party Odaseva CLI — "Command line interface to Odaseva Platform". Published by
+    the npm account `odaseva` with author dev.npm@odaseva.com, which is what establishes
+    first-party. The npm package is a thin Node wrapper (lib/oda_cli_runner.js) around
+    pre-built Go binaries for darwin-arm64, darwin-x64, linux-x64 and win32-x64.
+    CURRENCY: the latest release is 2022-12-09 — over three and a half years stale as of
+    this pass, with no newer publish on any tag. Command surface captured in
+    cli/odaseva-cli.yml.
+- language: javascript
+  registry: npm
+  name: odaseva-sfdx
+  url: https://www.npmjs.com/package/odaseva-sfdx
+  install: sfdx plugins:install odaseva-sfdx
+  official: true
+  version: 1.0.7
+  published: '2019-03-14'
+  kind: sfdx-plugin
+  note: >-
+    "Odaseva CLI for SFDX" — a Salesforce CLI (sfdx) / Heroku plugin published by the same
+    `odaseva` npm account. Last release 2019-03-14; superseded in practice by odaseva-dx
+    and then by odaseva-cli. `repository` is recorded as the literal string "local", so
+    there is no public source repo.
+- language: javascript
+  registry: npm
+  name: odaseva-dx
+  url: https://www.npmjs.com/package/odaseva-dx
+  install: sfdx plugins:install odaseva-dx
+  official: true
+  version: 0.0.0
+  published: '2019-08-01'
+  kind: sfdx-plugin
+  note: >-
+    "odaseva-dx brings advanced data capabilities to Salesforce CLI (sfdx) through Odaseva."
+    Single 0.0.0 release, 2019-08-01, MIT. Declares homepage/repository
+    https://github.com/odaseva/odaseva-dx, which now returns HTTP 404 — the source repo
+    has been removed or made private, so the published plugin has no readable source.
+registries_checked:
+- registry: npm
+  result: 3 first-party packages (odaseva-cli, odaseva-sfdx, odaseva-dx)
+- registry: pypi
+  result: no package (pypi.org/pypi/odaseva/json => 404)
+- registry: rubygems
+  result: no match (search returned [])
+- registry: crates.io
+  result: no match (total 0)
+- registry: packagist
+  result: no match
+- registry: maven-central
+  result: no match
+- registry: nuget
+  result: no match
+- registry: pkg.go.dev
+  result: >-
+    no published module; the Go source path embedded in the shipped binary is the private
+    tree C:/WS/Go/src/odaseva/odaseva_cli, not an importable module.
+sdks:
+  count: 0
+  note: >-
+    NO SERVER-SIDE SDK IS PUBLISHED. All three npm packages are command-line tooling — a
+    CLI and two Salesforce-CLI plugins — not client libraries an application imports, so
+    this artifact deliberately carries NO `SDKs` pointer in apis.yml. Odaseva ships a CLI
+    (see cli/odaseva-cli.yml) and nothing else on any public registry.
+source_repositories:
+  github_org: https://github.com/odaseva
+  github_org_status: 200
+  public_repos: 0
+  note: >-
+    The GitHub organization exists and is verifiably Odaseva's (profile website
+    https://www.odaseva.com/, contact xavier.dubreuil@odaseva.com) but states "This
+    organization has no public repositories", and github.com/odaseva/odaseva-dx — declared
+    by the published npm package — is a 404.

@@ -1,0 +1,140 @@
+generated: '2026-08-17'
+method: searched
+source: https://www.npmjs.com/package/odaseva-cli
+source_detail: >-
+  Package metadata and the shipped Go binary from the first-party npm release
+  odaseva-cli@2022.12.0 (registry.npmjs.org tarball, published 2022-12-09 by the `odaseva`
+  npm account, author dev.npm@odaseva.com). The command surface below was read out of the
+  binary's own embedded cobra command files and help strings — every command name and
+  description here exists verbatim in the published artifact. Odaseva publishes no public
+  CLI reference page; the customer knowledge base sits behind the platform login, so the
+  package itself is the only public source.
+name: Odaseva CLI
+binary: odaseva
+description: Command line interface to Odaseva Platform
+language: go
+version: 2022.12.0
+released: '2022-12-09'
+currency_note: >-
+  Latest public release is 2022-12-09 — no newer version on any npm tag as of 2026-08-17.
+install:
+- method: npm
+  command: npm install -g odaseva-cli
+  note: >-
+    Node wrapper installs and shells out to a bundled platform binary
+    (oda_cli_darwin_arm64, oda_cli_darwin_x64, oda_cli_linux_x64, oda_cli_win32_x64.exe).
+platforms:
+- darwin-arm64
+- darwin-x64
+- linux-x64
+- win32-x64
+config:
+  file: ~/.odaseva_cli
+  environment:
+  - ODASEVA_DEBUG
+  concepts:
+  - Odaseva endpoint alias (multiple named endpoints, selectable per command)
+  - Odaseva Org Id
+  - Odaseva API version (--apiVersion selects a specific Odaseva API version)
+commands:
+- group: auth
+  commands:
+  - name: login
+    description: Log in to Odaseva (Odaseva username / Odaseva password, returns an access token)
+  - name: logout
+    description: Log out of the current Odaseva session
+  - name: logins
+    description: List stored logins
+  - name: active
+    description: List or set the active Odaseva account
+  - name: current
+    description: Show the current account / org context
+  - name: apiVersion
+    description: Show or select the Odaseva API version to call
+- group: org
+  commands:
+  - name: org register
+    description: Register a Salesforce org with Odaseva
+  - name: org list
+    description: List the orgs registered with Odaseva
+  - name: org info
+    description: Show information about a registered org
+  - name: org delete
+    description: >-
+      Unregister one or more orgs from Odaseva (per the CLI's own help text the orgs are
+      not deleted, only unregistered from Odaseva)
+- group: backup
+  commands:
+  - name: backup
+    description: Backup your data to Odaseva
+  - name: backup upload
+    description: Upload a backup / data file to Odaseva
+- group: restore
+  commands:
+  - name: restore
+    description: Restore a backup to an org with Odaseva
+- group: job
+  commands:
+  - name: job list
+    description: Get job list
+  - name: job info
+    description: Get job info
+  - name: job run
+    description: Run a job
+  - name: job clone
+    description: Clone an existing job
+  - name: job retry
+    description: Retry a job
+  - name: job delete
+    description: Delete one or more jobs from Odaseva (requires at least one jobId)
+  - name: job download
+    description: Download the data associated with a job
+  - name: job logs
+    description: Download the logs for a job
+- group: data
+  commands:
+  - name: data
+    description: Data operations against a registered org
+  - name: compare data
+    description: Compare data between orgs / snapshots
+  - name: transform data
+    description: Transform (seed / anonymize) data
+- group: metadata
+  commands:
+  - name: metadata retrieve
+    description: Retrieve metadata
+  - name: metadata upload
+    description: Upload metadata
+  - name: compare metadata
+    description: Compare metadata between orgs
+common_flags:
+- flag: --apiVersion
+  description: Allows you to use a specific Odaseva API version.
+- flag: --draft
+  description: Create the new job as draft (the new job is created as Draft).
+- flag: --paramJson
+  description: Inline JSON job parameters.
+- flag: --paramJobFile
+  description: Command file including the job parameters.
+- flag: --validationOnly
+  description: Validate without executing.
+- flag: --logFile
+  description: Write CLI output to a log file.
+runtime_semantics:
+  api_style: >-
+    The CLI is a REST client for the Odaseva Platform API — its embedded strings include
+    "Invalid REST command", "Current Odaseva API version: v%s", "Default Odaseva API
+    version: v%s", "API: URL could not be retrieved.", "API: create Upload Job" and
+    "ApiClient: JobId cannot be empty."
+  auth: >-
+    Odaseva username + Odaseva password exchanged for an access token, carried with an
+    Odaseva Org Id; the binary also reports "Session expired!" and "The password is
+    expired. Login failed." See authentication/odaseva-authentication.yml.
+  async_model: >-
+    Everything long-running is a JOB: create (optionally as Draft), run, retry, poll info,
+    then download data or logs. Job creation returns a Job Id
+    ("Job creation did not return a valid Job Id" is the failure path).
+gaps:
+- No public CLI reference, man page, or docs URL — the customer knowledge base requires a platform login.
+- No public source repository (github.com/odaseva has zero public repos).
+- No published OpenAPI for the Odaseva Platform API the CLI calls.

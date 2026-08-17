@@ -1,4 +1,4 @@
-generated: '2026-07-20'
+generated: '2026-08-17'
 method: searched
 probe: true
 source: https://www.odaseva.com/security-trust
@@ -15,7 +15,11 @@ certifications:
 - IRAP
 - MLPS 2.0
 - CSA STAR Level 2
-notes: Independent audits by Ernst & Young; aligns with Salesforce Shield Platform Encryption.
+notes: >-
+  Independent audits by Ernst & Young; aligns with Salesforce Shield Platform Encryption.
+  The named certification list is the richer one captured on the 2026-07-20 pass and is
+  retained deliberately — the 2026-08-17 keyword probe returned a shorter subset
+  (SOC 2, ISO 27001, HIPAA, GDPR) and must not weaken a stronger searched artifact.
 evidence:
 - source: https://www.odaseva.com/security-trust
   keywords:
@@ -25,3 +29,10 @@ evidence:
   - hipaa
   - gdpr
   - csa star level 2
+- source: https://trust.odaseva.com/
+  kind: atlassian-statuspage
+  note: >-
+    trust.odaseva.com is NOT a trust center — it is Odaseva's Atlassian Statuspage
+    ("Odaseva Status"), recorded in lifecycle/odaseva-lifecycle.yml. The trust/compliance
+    posture is published at www.odaseva.com/security-trust.
+  http_status: 200

@@ -1,0 +1,29 @@
+generated: '2026-08-17'
+method: searched
+source: https://www.odaseva.com/
+limit_count: 0
+limits: []
+headers: []
+exhaustion_status: null
+note: >-
+  Odaseva publishes NO rate limits for its own Platform API, because it publishes no public
+  API reference at all — every documentation path probed is either a 404 on the marketing
+  site or a 401 behind the platform login (see cli/odaseva-cli.yml and
+  authentication/odaseva-authentication.yml). No X-RateLimit-*/RateLimit-*/Retry-After contract could be observed
+  either: an unauthenticated request to api.odaseva.com returns a Salesforce login
+  challenge, not an API response. NOTE THE COMMON CONFUSION: Odaseva's marketing does talk
+  about limits at length — "minimizing API and governor limit consumption", REST API
+  parallelization of 10 and Bulk API parallelization of 35 — but those are SALESFORCE's
+  limits that Odaseva works within on a customer's behalf, not limits Odaseva imposes on
+  callers of its own API. They are deliberately not recorded as Odaseva rate limits. NO
+  `RateLimits` pointer is emitted in apis.yml, so this honest zero cannot be read as a
+  published rate-limit signal.
+evidence:
+- url: https://api.odaseva.com/openapi.json
+  status: 401
+- url: https://www.odaseva.com/api
+  status: 404
+- url: https://www.odaseva.com/developers
+  status: 404
+- url: https://www.odaseva.com/documentation
+  status: 404
